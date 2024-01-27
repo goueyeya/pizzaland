@@ -1,0 +1,31 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}Modification d'une pizza{% endblock %}
+
+{% block main %}
+<div class="container-fluid"><h2>Modification pizza {{pizza.nom}}</h2></div>
+<hr>
+<div class="container">
+    <form enctype="multipart/form-data" action="/pizzas/{{pizza.idPizza}}/updated/" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_nomPizza">Nom de la pizza</label>
+            <input type="text" class="form-control" name="nomPizza" required id="id_nomPizza" maxlength="50" value="{{pizza.nomPizza}}">
+        </div>
+        
+        <div class="mb-3" class="form-label">
+            <label for="id_prix_Pizza">Prix de la pizza</label>
+            <input type="number" class="form-control" name="prix" required id="id_prix_Pizza" maxlength="50" step="0.01" min="0" value="{{pizza.prix}}">
+        </div>
+        <div class="classIMG d-flex justify-content-center">
+            <img class="imagePizza" src="{{MEDIA_URL}}{{pizza.image}}" alt="image-pizza" title="{{pizza.nomPizza}}" width="640px" height="480px">
+        </div>
+        <div class="classNOM d-flex justify-content-center"><i>Fichier actuel : {{pizza.image}}.</i></div>
+        <div class="mb-3" class="form-label">
+            <label for="id_image" >Nouveau Fichier image</label>
+            <input  class="form-control" name="image" type="file" id="id_image" accept="image/*">
+        </div>
+        <button type="submit" class="btn btn-dark">Envoyer</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}Création ingrédient{% endblock %}
+
+{% block main %}
+<div class="container-fluid"><h2>Création d'un ingrédient</h2></div>
+<hr>
+<div class="container card m-3 card-pizza mx-auto p-3">
+    <form action="/ingredients/create/" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+        <label for="id_nomIngredient">Nom de l'ingrédient</label>
+        <input type="text" class="form-control" name="nomIngredient" placeholder="tomates, ananas..." required id="id_nomIngredient" maxlength="50">
+        </div>
+        <button type="submit" class="btn btn-dark">Envoyer</button>
+    </form>
+</div>
+{% endblock %}

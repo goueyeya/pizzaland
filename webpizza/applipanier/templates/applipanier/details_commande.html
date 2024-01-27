@@ -1,0 +1,36 @@
+{% extends 'applipizza/base.html' %}
+{% load static %}
+
+{% block title %}Détails de la Commande{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+    <h2 class="mb-3">Détails de la Commande</h2>
+    <div class="card mb-3">
+        <div class="card-header h5 text-white bg-dark">
+            Commande {{ commande.idCommande }}
+        </div>
+        <div class="card-body">
+            {% for ligne_commande in lignes_commande %}
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <img src="{{MEDIA_URL}}{{ ligne_commande.pizza.image }}" alt="{{ ligne_commande.pizza.nomPizza }}" class="img-fluid">
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="card-title">{{ ligne_commande.pizza.nomPizza }}</h5>
+                        <p class="card-text">
+                            <strong>Quantité :</strong> {{ ligne_commande.quantite }}<br>
+                            <strong>Prix unitaire :</strong> {{ ligne_commande.pizza.prix }} €<br>
+                            <strong>Prix total :</strong> {{ ligne_commande.prix }} €
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+            <p class="card-text d-flex justify-content-end">
+                <strong>Prix total de la commande :</strong> &nbsp;{{ commande.prix }} €
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

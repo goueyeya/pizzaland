@@ -1,0 +1,103 @@
+{% extends 'applipizza/base.html' %}
+{% load static %}
+{% block title %}Activité récente{% endblock %}
+{% block main %}
+<div id="content">
+    <h2>Résumé de l'activité des 7 derniers jours</h2>
+    <div class="row justify-content-around">
+        <div class="card col-sm-3 m-4 text-center card-pizza">
+            <div class="m-3">
+                <h3>Meilleure vente</h3>
+            </div>
+            <div class="card-body">
+                <h5><strong>{{best_sale}}</strong> : {{best_nb_sale}} ventes</h5>
+                <img src="{{MEDIA_URL}}{{best_sale_img}}" alt="image de pizza" class="img-fluid" style="width:auto;height:auto;"></img>
+            </div>
+        </div>
+
+        <div class="card col-sm-3 m-4 text-center card-pizza">
+            <div class="mt-3">
+                <h3>Nombre de commandes</h3>
+            </div>
+            <div class="card-body d-flex justify-content-center">
+                <p class="my-auto" style="font-size: 8vh;"><strong>{{nb_commande}}</strong></p>
+            </div>
+        </div>
+
+        <div class="card col-sm-3 m-4 text-center card-pizza">
+            <div class="mt-3">
+                <h3>Panier moyen</h3>
+            </div>
+            <div class="card-body d-flex justify-content-center">
+                <p class="my-auto" style="font-size: 5vh;"><strong>{{panier_moyen}} €</strong></p>
+            </div>
+        </div>
+        
+        <div class="card col-sm-5 m-4 text-center card-pizza">
+            <div class="m-3 m-3 p-2">
+                <h3>Chiffre d'affaires</h3>
+            </div>
+            <canvas id="chart_CA" width="100" height="40"></canvas> 
+        </div>
+
+        <div class="card col-sm-5 m-4 text-center card-pizza">
+            <div class="m-3 p-2">
+                <h3>Répartition des ventes par pizza</h3>
+            </div>
+            <canvas id="chart_ventes" width="100" height="40"></canvas> 
+        </div>
+        
+
+        <!-- insertion de chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            let canvas_chart_CA = document.getElementById('chart_CA');
+            let ctx = canvas_chart_CA.getContext('2d');
+            let CA_chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: {{dates|safe}},
+                    datasets: [{
+                        label: 'CA',
+                        data: {{montants|safe}},
+                        borderColor: "red",
+                        fill: false
+                        }]
+                    },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: {{CAmax}}
+                        }
+                    }
+                }
+            });
+
+            let canvas_chart_ventes = document.getElementById('chart_ventes');
+            let ctx1 = canvas_chart_ventes.getContext('2d');
+            let vente_chart = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: {{noms|safe}},
+                    datasets: [{
+                        label: 'ventes',    
+                        data: {{ventes|safe}},
+                        borderWidth: 1
+                        }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: {{best_nb_sale}}+5
+                        }
+                    }
+                }
+            });
+        </script>
+
+    </div>   
+    
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}Les Commandes{% endblock %}
+
+{% block main %}
+    <!-- Tableau des commandes -->
+    <h2>Liste des commandes</h2>
+    <hr>
+    <div class="table-responsive container">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Numéro de commande</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Date de commande</th>
+                    <th scope="col">Prix total</th>
+                    <th scope="col">Détail</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commande in commandes %}
+                    <tr>
+                        <th scope="row">{{ commande.idCommande }}</th>
+                        <td><img src="{{ MEDIA_URL }}{{ commande.pizzauser.image }}" class="img-fluid rounded-circle" alt="{{ commande.client }}" width="30" height="30">&nbsp;{{ commande.pizzauser.username }}</td>
+                        <td>{{ commande.dateCommande|date:"d/m/Y" }}</td>
+                        <td>{{ commande.prix }}</td>
+                        <td>
+                            <a href="/orders/{{ commande.idCommande }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 20 20">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                  </svg>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

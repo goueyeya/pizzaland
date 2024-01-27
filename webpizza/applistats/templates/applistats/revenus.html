@@ -1,0 +1,39 @@
+{% extends 'applipizza/base.html' %}
+{% load static %}
+{% block title %}Revenus sur 7 jours {% endblock %}
+{% block main %}
+<div id="content">
+    <h2>Chiffre d'affaires par jour sur les 7 derniers jours</h2>
+    <!-- la balise canvas qui va recevoir le graphique généré par le script -->
+    <div class="card col-sm-10 mx-auto mt-4 p-2 dcard-pizza">
+        <canvas id="chart_CA" width="100" height="40"></canvas> 
+    </div>
+    <!-- insertion de chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- le script qui génère le graphique en utilisant les variables transmises par la view -->
+    <script>
+        let canvas_chart_CA = document.getElementById('chart_CA');
+        let ctx = canvas_chart_CA.getContext('2d');
+        let CA_chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{dates|safe}},
+                datasets: [{
+                    label: 'CA',
+                    data: {{montants|safe}},
+                    borderWidth: 1
+                    }]
+                },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: {{CAmax}}
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+{% endblock %}

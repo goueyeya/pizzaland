@@ -1,0 +1,54 @@
+<div class="site-content row p-3">
+    <!-- Sidebar -->
+    <div class=" col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+            <ul id="dashboard" class="nav nav-dash flex-column">
+                <!-- Administration -->
+                <li class="nav-item">
+                    <h1 style="font-size: 3vh;">Administration</h1>
+                </li>
+                <!-- Pizzas -->
+                <li>
+                    <a id="toggleTextPiz" class="text-toggle link-dash">Pizzas</a>
+                    <div id="hiddenLinksPiz" class="hidden">
+                        <ul>
+                            <li><a class="nav-link hidden-link" href="/pizzas/">Les Pizzas</a></li>
+                            <li><a class="nav-link hidden-link" href="/pizzas/add/">Création pizza</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Ingrédients -->
+                <li>
+                    <a id="toggleTextIng" class="text-toggle link-dash">Ingrédients</a>
+                    <div id="hiddenLinksIng" class="hidden">
+                        <ul>
+                            <li><a class="nav-link hidden-link" href="/ingredients/">Les Ingrédients</a></li>
+                            <li><a class="nav-link hidden-link" href="/ingredients/add/">Création ingrédient</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Clients -->
+                <li>
+                    <a id="toggleTextIng" class="text-toggle link-dash" href="/customers">Clients</a>
+                </li>
+                <li>
+                    <a id="toggleTextIng" class="text-toggle link-dash" href="/allorders">Commandes</a>
+                </li>
+                <!-- Statistiques -->
+                <li>
+                    <h1 style="font-size: 3vh;">Statistiques</h1>
+                </li>
+                <li>
+                    <a class="text-toggle link-dash" href="/stats/revenus">Revenus</a>
+                </li>
+                <li>
+                    <a class="text-toggle link-dash" href="/stats/ventes">Ventes</a>
+                </li>
+                <li>
+                    <a class="text-toggle link-dash" href="/stats/activite/">Activité Récente</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Content -->
+    <div class="col-md-9 ml-sm-auto col-lg-10 px-4">

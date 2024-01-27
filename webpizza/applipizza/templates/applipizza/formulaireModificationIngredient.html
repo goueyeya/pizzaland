@@ -1,0 +1,18 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}Modification ingrédient{% endblock %}
+
+{% block main %}
+<div class="container-fluid"><h2>Modification ingrédient {{ingredient.nom}}</h2></div>
+<hr>
+<div class="container">
+    <form action="/ingredients/{{ingredient.idIngredient}}/updated/" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+        <label for="id_nomIngredient">Nom de l'ingrédient</label>
+        <input type="text" class="form-control" name="nomIngredient" value="{{ingredient.nomIngredient}}" required id="id_nomIngredient" maxlength="50">
+        </div>
+        <button type="submit" class="btn btn-dark">Envoyer</button>
+    </form>
+</div>
+{% endblock %}

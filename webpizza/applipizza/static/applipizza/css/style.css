@@ -1,0 +1,171 @@
+@font-face {
+  font-family: Pacifico;
+  src: url("./font/Pacifico-Regular.ttf");
+}
+
+@font-face {
+  font-family: SharpSans;
+  src: url("./font/SharpSans.otf");
+}
+
+@font-face {
+  font-family: SharpSans;
+  src: url("./font/SharpSansBold.otf");
+  font-weight: bold;
+}
+
+body{
+  font-family: SharpSans;
+  background-color: #FCFDFC;
+}
+
+.card-style{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card-pizza{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: all .02s ease-out;
+}
+
+.card-pizza:hover {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 12px 24px 0px; /* Darker box shadow on hover */
+}
+
+.titre{
+  font-family: Pacifico;
+}
+
+h2 {
+    color: black;
+    text-align: center;
+    font-weight: bold;
+}
+
+.p-center{
+  text-align: center;
+  margin:20px
+}
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
+
+.btn-css{
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.btn-css:disabled {
+  pointer-events: none;
+}
+
+.btn-css:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.btn-css:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.lien-style{
+  text-decoration:none;
+  color: black;
+}
+
+.lien-style:hover {
+  text-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  color : red;
+}
+
+.lien-trash:hover {
+  text-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  color : red;
+}
+
+.lien-order {
+  text-decoration:none;
+  color : white;
+}
+
+.lien-order:hover {
+  text-decoration:none;
+  color : white;
+}
+
+/* Ajouter du style CSS personnalisé ici */
+.foot {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.nav-dash {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8f9fa; /* Couleur de fond */
+}
+
+.btn-group-m {
+    display: flex;
+    align-items: center;
+    margin: auto; 
+}
+
+/* Style pour cacher les liens au départ */
+.hidden {
+  display: none;
+}
+
+.text-toggle{
+  text-decoration: none;
+  font-size: large;
+  color: black;
+}
+
+.text-toggle:hover{
+  text-shadow: rgba(0, 0, 0, 0.35) 0 8px 15px;
+  color : red;
+}
+
+.hidden-link{
+  text-decoration:none;
+  color:black;
+}
+
+.hidden-link:hover{
+  text-decoration:none;
+  color:green;
+}

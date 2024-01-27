@@ -1,0 +1,29 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}Liste des Clients{% endblock %}
+
+{% block main %}
+<h2>Clients</h2>
+<div class="container">
+    <div class="row">
+    {% for client in clients %}
+        <div class=" col-md-6 m-4 card card-pizza mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-4">
+                    <img src="{{ MEDIA_URL}}{{ client.image }}" class="img-fluid mt-4" alt="{{ client.username }}" width="auto" height="auto" >
+                </div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{ client.username }}</strong></h5>
+                        <p class="card-text">Nom complet : {{ client.last_name }} {{ client.first_name }}</p>
+                        <p class="card-text">Email : <a href="mailto:{{client.email}}">{{ client.email }}</a></p>
+                        <p class="card-text">Date d'adhésion : {{ client.date_joined|date:"d/m/Y" }}</p>
+                        <a href="/customers/{{ client.id }}/orders/" class="btn btn-outline-dark">Voir les commandes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

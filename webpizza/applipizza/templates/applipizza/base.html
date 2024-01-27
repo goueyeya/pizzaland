@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'applipizza/css/style.css' %}">
+    <link rel="icon" href="{% static 'applipizza/img/pizza.png' %}">
+</head>
+
+<body class="site">
+    <header>
+        {% if user.is_staff %}
+        {% include 'applicompte/menuStaff.html' %}
+        {% elif user.is_authenticated %}
+        {% include 'applicompte/menuClient.html' %}
+        {% else %}
+        {% include 'applicompte/menuNonConnecte.html' %}
+        {% endif %}
+    </header>
+    {% if user.is_staff %}
+        {% include 'applipanier/dashboard.html' %}
+    {% endif %}
+            <main class="site-content container-fluid mt-5">
+
+                {% block main %}{% endblock %}
+
+            </main>
+            {% if user.is_staff %}
+        </div>
+    </div>
+    {% endif %}
+            <div class="container{% if user.is_staff %}-fluid mx-4{% endif %}">
+                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top ">
+                    {% include 'applipizza/footer.html' %}
+                </footer>
+            </div>
+    
+    <script src="{% static 'applipanier/js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+
+</html>

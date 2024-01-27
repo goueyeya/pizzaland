@@ -1,0 +1,42 @@
+{% extends 'applipizza/base.html' %}
+{% load static %}
+{% block title %}Ventes sur 7 jours {% endblock %}
+{% block main %}
+<div id="content">
+    <h2>Répartition des ventes par pizzas</h2>
+    <!-- la balise canvas qui va recevoir le graphique généré par le script -->
+    <div class="card col-sm-10 mx-auto mt-4 d-flex justify-content-center p-3 card-pizza">
+        <canvas class="mx-auto" id="chart_ventes" width="750" height="300"></canvas> 
+    </div>
+    
+    <!-- insertion de chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- le script qui génère le graphique en utilisant les variables transmises par la view -->
+    <script>
+        let canvas_chart_ventes = document.getElementById('chart_ventes');
+        let ctx = canvas_chart_ventes.getContext('2d');
+        let ventes_chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: {{noms|safe}},
+                datasets: [{
+                    label: 'ventes',    
+                    data: {{ventes|safe}},
+                    }]
+            },
+            options: {
+                plugins : {
+                    legend: {
+                        position: 'top',
+                    },
+                    title : {
+                        display : true,
+                        text: 'Répartition des ventes par pizza'
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+{% endblock %}

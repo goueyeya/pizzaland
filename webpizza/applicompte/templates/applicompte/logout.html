@@ -1,0 +1,22 @@
+{% extends 'applipizza/base.html' %}
+{% load static %}
+
+{% block title %}Au revoir !{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+    <div class="card card-style" style="min-width: 14rem; border-radius : 1rem">
+        <div class="card-body text-center">
+            <h2 class="card-title mb-4">Vous nous manquez déjà !</h2>
+            <h2 class="card-subtitle mb-4 text-muted">Nous espérons vous revoir bientôt !</h2>
+            <div class="container mt-4">
+                <img src="{% static 'applipizza/img/pizza_no_b.png' %}" alt="imagePizza">
+            </div>
+            <div class="container mt-4">
+                <p class="card-text">Merci de votre visite. Vous êtes maintenant déconnecté.</p>
+                <a class="btn btn-dark btn-lg btn-block" href="{% url 'login' %}">Connexion</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
