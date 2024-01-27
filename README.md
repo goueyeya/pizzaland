@@ -18,7 +18,7 @@ Le projet Pizza Land est une application web avancée développée en utilisant 
 - Pillow (version 8.4.0 ou supérieure)
 
 ## Installation
-1. Clonez le repository: `git clone https://git.iut-orsay.fr/goueyey/webpizza.git`
+1. Clonez le repository: `git clone https://github.com/goueyeya/pizzaland.git`
 2. Naviguez vers le répertoire du projet: `cd webpizza`
 3. Installez les dépendances: `pip install -r requirements.txt`
 4. Appliquez les migrations: `python manage.py migrate`
@@ -32,4 +32,4 @@ Le projet Pizza Land est une application web avancée développée en utilisant 
 
 # Auteur 
 
-- [Gaëtan Oueyeya ](https://git.iut-orsay.fr/goueyey)
+- [Gaëtan Oueyeya ](https://github.com/goueyeya/)
